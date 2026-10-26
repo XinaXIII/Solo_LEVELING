@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FitQuest — квесты для похудения</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);--bg:#f4f6f3;--card:#fff;--tx:#1b2320;--mu:#667770;--ac:#16a34a;--on:#fff;--ac2:#dcfce7;--bd:#e1e7e3;--wa:#d97706}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1512;--card:#17211c;--tx:#eaf2ee;--mu:#93a39b;--ac:#34d399;--on:#06281c;--ac2:#12332a;--bd:#25342e;--wa:#fbbf24}}
+:root[data-theme=dark]{--bg:#0e1512;--card:#17211c;--tx:#eaf2ee;--mu:#93a39b;--ac:#34d399;--on:#06281c;--ac2:#12332a;--bd:#25342e;--wa:#fbbf24}
+html,body{margin:0}body{background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,sans-serif;max-width:520px;margin:0 auto;padding:14px 14px 90px}
+h1{font-size:20px;margin:0}h2{font-size:17px;margin:0 0 8px}small,.mu{color:var(--mu)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin:12px 0}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.bar{height:8px;border-radius:8px;background:var(--bd);overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--ac);transition:width .4s}
+button,select,input{font:inherit;color:var(--tx)}
+.btn{background:var(--ac);color:var(--on);border:0;border-radius:12px;padding:11px 16px;font-weight:600;cursor:pointer}
+.btn.g{background:var(--ac2);color:var(--ac)}.btn:disabled{opacity:.5}
+input[type=text],input[type=number],select{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:10px;width:100%;box-sizing:border-box}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;background:var(--card);border-top:1px solid var(--bd);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
+nav div{display:flex;width:100%;max-width:520px}nav button{flex:1;background:none;border:0;padding:6px 0;font-size:12px;color:var(--mu);cursor:pointer}
+nav button b{display:block;font-size:20px;font-weight:400}nav button.on{color:var(--ac);font-weight:700}
+.q{display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--bd)}.q:first-of-type{border-top:0}
+.ck{width:26px;height:26px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;flex:none}.ck.d{background:var(--ac);border-color:var(--ac);color:var(--on)}
+.vw{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:3/4}.vw video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.big{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-size:64px;font-weight:800;color:#fff;text-shadow:0 2px 12px #000}
+.chat{max-height:46vh;overflow:auto}.m{padding:8px 12px;border-radius:14px;margin:6px 0;max-width:88%;white-space:pre-wrap}
+.m.u{background:var(--ac);color:var(--on);margin-left:auto}.m.a{background:var(--ac2)}
+.tabv{display:none}.tabv.on{display:block}
+.mac{display:flex;gap:8px}.mac div{flex:1;background:var(--bg);border-radius:10px;padding:8px;text-align:center;font-size:13px}.mac b{display:block;font-size:16px}
+</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap"><style>
+:root:root:root{--bg:#04060d;--card:rgba(8,16,38,.86);--tx:#dbe7ff;--mu:#7f93c0;--ac:#3b9bff;--on:#02102a;--ac2:rgba(59,155,255,.14);--bd:rgba(59,155,255,.45);--wa:#a855f7;color-scheme:dark}
+body{font-family:Rajdhani,system-ui,sans-serif;font-weight:500;font-size:17px;background:radial-gradient(600px 380px at 50% -80px,rgba(59,155,255,.28),transparent),radial-gradient(500px 360px at 100% 100%,rgba(168,85,247,.18),transparent),#04060d;background-attachment:fixed}
+h1{letter-spacing:.2em;text-transform:uppercase;color:#8fc4ff;text-shadow:0 0 12px #3b9bff}
+#hd{font-weight:700;letter-spacing:.12em;color:#a855f7;text-shadow:0 0 10px rgba(168,85,247,.8)}
+.card{border-radius:4px;border:1px solid var(--bd);box-shadow:0 0 18px rgba(59,155,255,.25),inset 0 0 22px rgba(59,155,255,.07);backdrop-filter:blur(4px)}
+h2{text-align:center;text-transform:uppercase;letter-spacing:.16em;color:#8fc4ff;text-shadow:0 0 10px #3b9bff;border-bottom:1px solid var(--bd);padding-bottom:8px;margin-bottom:10px;font-size:18px}
+.btn{border-radius:3px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;text-transform:uppercase;letter-spacing:.1em;box-shadow:0 0 14px rgba(59,155,255,.55)}
+.btn.g{background:var(--ac2);color:#8fc4ff;border:1px solid var(--bd);box-shadow:none}
+.bar{height:6px;border-radius:2px;background:rgba(59,155,255,.15)}.bar i{background:linear-gradient(90deg,#3b9bff,#a855f7);box-shadow:0 0 10px #3b9bff}
+.ck{border-radius:3px;border-color:var(--bd)}.ck.d{background:#3b9bff;box-shadow:0 0 10px #3b9bff;color:#02102a}
+.q{border-color:rgba(59,155,255,.2)}.vw{border-radius:4px;border:1px solid var(--bd);box-shadow:0 0 18px rgba(59,155,255,.3)}
+.big{font-family:Rajdhani;color:#8fc4ff;text-shadow:0 0 18px #3b9bff,0 2px 10px #000}
+.m{border-radius:3px}.m.u{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff}.m.a{background:var(--ac2);border:1px solid var(--bd)}
+nav{background:rgba(4,8,20,.96);border-top:1px solid var(--bd);box-shadow:0 -4px 20px rgba(59,155,255,.2)}nav button{font-family:Rajdhani;font-weight:700;letter-spacing:.08em;text-transform:uppercase}nav button.on{text-shadow:0 0 10px #3b9bff}
+input[type=text],input[type=number],select{border-radius:3px;background:rgba(59,155,255,.08);border-color:var(--bd)}
+.mac div{border-radius:3px;background:rgba(59,155,255,.08)}.rk{font-size:56px;font-weight:700;line-height:1;color:#8fc4ff;text-shadow:0 0 20px #3b9bff}
+</style><script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+try{Telegram.WebApp.ready();Telegram.WebApp.expand()}catch(_){}
+const cfg=()=>{try{return JSON.parse(localStorage.getItem('fqai')||'{}')}catch(_){return{}}};
+async function post(messages,vision){
+ const r=await fetch('/api/ai',{method:'POST',headers:{'content-type':'application/json','x-init':(window.Telegram&&Telegram.WebApp&&Telegram.WebApp.initData)||''},body:JSON.stringify({messages,vision,cfg:cfg()})});
+ const j=await r.json().catch(()=>({}));
+ if(!r.ok)throw{code:'err',message:String(j.error||'HTTP '+r.status).slice(0,150)};
+ return j.text}
+const sampleFn=async(input,o={})=>{
+ const msgs=typeof input==='string'?[{role:'user',content:input}]:input;
+ const imgs=o.images?await Promise.all(o.images.map(b=>new Promise(res=>{const f=new FileReader();f.onload=()=>res(f.result);f.readAsDataURL(b)}))):[];
+ const text=await post(msgs,imgs);if(o.onText)o.onText({text});return{text}};
+sampleFn.json=async(i,o)=>{const t=await sampleFn(i,o);return JSON.parse(t.text.match(/\{[\s\S]*\}/)[0])};
+window.claude={use:async n=>n==='sample'?sampleFn:null};
+</script>
+</head><body>
+<div class="row"><h1>⚔ Система</h1><div id="hd"></div></div>
+
+<section id="t0" class="tabv on"></section>
+<section id="t1" class="tabv">
+ <div class="card"><h2>[ Тренировка ]</h2>
+  <select id="ex"><option value="squat">Приседания</option><option value="push">Отжимания</option></select>
+  <p class="mu" style="font-size:14px">Поставь телефон так, чтобы тело было целиком в кадре, сбоку или спереди. Приложение считает повторы по ритму движения.</p>
+  <div class="vw"><video id="vid" playsinline muted></video><div class="big" id="cnt">0</div></div>
+  <canvas id="cv" width="48" height="36" hidden></canvas>
+  <div class="row" style="margin-top:10px"><button class="btn" id="go">Старт</button><button class="btn g" id="man">+1 вручную</button></div>
+  <p id="cmsg" class="mu" style="font-size:14px;margin-bottom:0"></p>
+ </div>
+</section>
+<section id="t2" class="tabv">
+ <div class="card"><h2>[ Питание ]</h2>
+  <div id="kc"></div>
+  <label class="btn" style="display:block;text-align:center;margin-top:10px;cursor:pointer">📷 Сфотографировать еду<input id="ph" type="file" accept="image/*" capture="environment" hidden></label>
+  <p id="fmsg" class="mu" style="font-size:14px"></p>
+  <div id="ml"></div>
+ </div>
+ <div class="card"><div class="row"><span>Дневная цель, ккал</span><input type="number" id="goal" style="width:110px"></div></div>
+</section>
+<section id="t3" class="tabv">
+ <div class="card"><h2>[ Система-наставник ]</h2><div class="chat" id="chat"></div>
+  <div class="row" style="margin-top:10px"><input type="text" id="q" placeholder="Что съесть на ужин? Как поднять сложность?"><button class="btn" id="send">→</button></div>
+  <p id="cerr" class="mu" style="font-size:14px"></p></div>
+</section>
+
+<section id="t4" class="tabv"></section>
+<nav><div id="nv"></div></nav>
+
+<script>
+const $=id=>document.getElementById(id);
+const e=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+let S={lvl:1,xp:0,day:today(),r:{squat:0,push:0},meals:[],goal:1800,paid:''};
+try{const x=localStorage.getItem('fq');if(x)S=Object.assign(S,JSON.parse(x))}catch(_){}
+if(S.day!==today()){S.day=today();S.r={squat:0,push:0};S.meals=[]}
+const save=()=>{try{localStorage.setItem('fq',JSON.stringify(S))}catch(_){}};
+const tgt=()=>({squat:6+4*S.lvl,push:3+2*S.lvl,meals:2});
+const kcal=()=>S.meals.reduce((a,m)=>a+(+m.kcal||0),0);
+const names={squat:'Приседания',push:'Отжимания'};
+
+function quests(){const t=tgt();return[
+ {k:'squat',ic:'🦵',n:'Приседания',v:Math.min(S.r.squat,t.squat),t:t.squat},
+ {k:'push',ic:'🤲',n:'Отжимания',v:Math.min(S.r.push,t.push),t:t.push},
+ {k:'meals',ic:'🥗',n:'Записать приёмы пищи (фото)',v:Math.min(S.meals.length,t.meals),t:t.meals}]}
+function check(){const q=quests();if(q.every(x=>x.v>=x.t)&&S.paid!==S.day){S.paid=S.day;S.xp+=100;S.lvl++;save();return true}return false}
+
+function render(){
+ const lv=check(),q=quests(),k=kcal(),pct=Math.min(100,k/S.goal*100);
+ const rk=S.lvl<3?'E':S.lvl<6?'D':S.lvl<10?'C':S.lvl<15?'B':S.lvl<20?'A':'S';$('hd').textContent='РАНГ '+rk+' · УР. '+S.lvl;
+ $('t0').innerHTML=(lv?'<div class="card"><h2>[ Уведомление ]</h2><p style="text-align:center;margin:0">Квест выполнен. Уровень повышен до '+S.lvl+'. Нагрузка возрастает.</p></div>':'')+'<div class="card"><h2>[ Игрок ]</h2><div class="row" style="justify-content:space-around;text-align:center"><div><div class="rk">'+rk+'</div><small>РАНГ</small></div><div style="flex:1;max-width:220px"><div class="row"><small>СИЛА</small><b>'+(10+S.lvl*2+S.r.push)+'</b></div><div class="row"><small>ЛОВКОСТЬ</small><b>'+(10+S.lvl*2+S.r.squat)+'</b></div><div class="row"><small>ВЫНОСЛИВОСТЬ</small><b>'+(10+S.lvl*2+S.meals.length*3)+'</b></div></div></div><small style="display:block;text-align:center;margin-top:8px">XP: '+S.xp+'</small></div>'+
+ '<div class="card"><h2>[ Ежедневный квест ]</h2>'+q.map(x=>'<div class="q"><div class="ck '+(x.v>=x.t?'d':'')+'">'+(x.v>=x.t?'✓':x.ic)+'</div><div style="flex:1"><div>'+x.n+'</div><div class="bar"><i style="width:'+x.v/x.t*100+'%"></i></div></div><small>'+x.v+'/'+x.t+'</small></div>').join('')+
+ '<p style="font-size:14px;margin-bottom:0;text-align:center;color:var(--wa)">⚠ Не выполнишь квест — штрафа не будет, но и уровень не вырастет. Выполни всё: +100 XP.</p></div>'+
+ '<div class="card"><h2>[ Энергия ]</h2><div class="row"><b style="font-size:24px">'+Math.round(k)+'</b><small>из '+S.goal+' ккал</small></div><div class="bar"><i style="width:'+pct+'%;background:'+(k>S.goal?'var(--wa)':'var(--ac)')+'"></i></div></div>';
+ $('kc').innerHTML='<div class="row"><b style="font-size:24px">'+Math.round(k)+' ккал</b><small>цель '+S.goal+'</small></div>';
+ $('ml').innerHTML=S.meals.map((m,i)=>'<div class="q"><div style="flex:1"><div>'+e(m.dish)+'</div><small>'+e(m.tip||'')+'</small><div class="mac"><div><b>'+m.kcal+'</b>ккал</div><div><b>'+m.p+'</b>белки</div><div><b>'+m.f+'</b>жиры</div><div><b>'+m.c+'</b>углев.</div></div></div><button class="btn g" data-d="'+i+'">✕</button></div>').join('');
+ $('cnt').textContent=S.r[$('ex').value];
+ $('goal').value=S.goal;
+}
+document.addEventListener('click',ev=>{const d=ev.target.dataset&&ev.target.dataset.d;if(d!=null){S.meals.splice(+d,1);save();render()}});
+$('goal').onchange=()=>{S.goal=Math.max(800,+$('goal').value||1800);save();render()};
+
+const tabs=[['🏠','Квесты'],['📹','Камера'],['🍽️','Еда'],['🧠','Тренер'],['⚙️','ИИ']];
+$('nv').innerHTML=tabs.map((t,i)=>'<button data-t="'+i+'"><b>'+t[0]+'</b>'+t[1]+'</button>').join('');
+function show(i){document.querySelectorAll('.tabv').forEach((s,j)=>s.classList.toggle('on',i===j));document.querySelectorAll('nav button').forEach((b,j)=>b.classList.toggle('on',i===j));if(i!==1)stop()}
+$('nv').onclick=ev=>{const b=ev.target.closest('button');if(b)show(+b.dataset.t)};
+
+/* ---- Камера: счёт повторов по ритму вертикального движения ---- */
+const cam={on:false,prev:null,s:.5,hi:.5,lo:.5,st:0,last:0,stream:null};
+function addRep(){const k=$('ex').value;S.r[k]++;save();$('cnt').textContent=S.r[k];if(navigator.vibrate)navigator.vibrate(30);const l=check();if(l)$('cmsg').textContent='Уровень повышен! Следующие квесты сложнее.'}
+$('man').onclick=()=>{addRep();render()};
+$('ex').onchange=()=>{cam.prev=null;cam.st=0;$('cnt').textContent=S.r[$('ex').value]};
+function stop(){cam.on=false;if(cam.stream){cam.stream.getTracks().forEach(t=>t.stop());cam.stream=null}$('go').textContent='Старт';render()}
+function tick(){
+ if(!cam.on)return;
+ const v=$('vid'),c=$('cv'),x=c.getContext('2d',{willReadFrequently:true});
+ try{x.drawImage(v,0,0,48,36);const d=x.getImageData(0,0,48,36).data,g=new Float32Array(1728);
+  for(let i=0;i<1728;i++)g[i]=(d[i*4]+d[i*4+1]+d[i*4+2])/3;
+  if(cam.prev){let m=0,sy=0;for(let i=0;i<1728;i++){const df=Math.abs(g[i]-cam.prev[i]);if(df>16){m+=df;sy+=df*Math.floor(i/48)}}
+   if(m>350){cam.s=cam.s*.7+(sy/m/36)*.3;cam.hi=Math.max(cam.s,cam.hi-.004);cam.lo=Math.min(cam.s,cam.lo+.004);
+    const a=cam.hi-cam.lo,n=Date.now();
+    if(a>.06){if(cam.st===0&&cam.s>cam.hi-a*.25)cam.st=1;else if(cam.st===1&&cam.s<cam.lo+a*.25&&n-cam.last>700){cam.st=0;cam.last=n;addRep()}}}}
+  cam.prev=g}catch(_){}
+ setTimeout(tick,66)}
+$('go').onclick=async()=>{
+ if(cam.on){stop();return}
+ try{cam.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:640,height:480},audio:false});
+  const v=$('vid');v.srcObject=cam.stream;await v.play();cam.on=true;cam.prev=null;cam.st=0;$('go').textContent='Стоп';$('cmsg').textContent='Считаю повторы. Двигайся плавно, не двигай телефон.';window.poseTick?poseTick():tick()}
+ catch(_){$('cmsg').textContent='Нет доступа к камере. Разреши камеру в настройках или считай кнопкой «+1 вручную».'}};
+
+/* ---- Еда по фото ---- */
+async function smp(){return window.claude?await claude.use('sample'):null}
+$('ph').onchange=async ev=>{
+ const f=ev.target.files[0];if(!f)return;const m=$('fmsg');m.textContent='Анализирую фото…';
+ try{const s=await smp();if(!s){m.textContent='ИИ недоступен в этом окне.';return}
+  const bm=await createImageBitmap(f),r=Math.min(1,768/Math.max(bm.width,bm.height)),c=document.createElement('canvas');
+  c.width=bm.width*r;c.height=bm.height*r;c.getContext('2d').drawImage(bm,0,0,c.width,c.height);
+  const b=await new Promise(o=>c.toBlob(o,'image/jpeg',.8));
+  const j=await s.json('Ты диетолог. По фото оцени блюдо и порцию. Ответь ТОЛЬКО JSON без пояснений: {"dish":"название по-русски","kcal":число,"p":белки г,"f":жиры г,"c":углеводы г,"tip":"короткий совет диетолога до 90 символов"}. Если на фото нет еды: {"dish":"Еда не найдена","kcal":0,"p":0,"f":0,"c":0,"tip":"Сфотографируй блюдо крупнее"}.',{images:[b],cache:false});
+  if(!j||!j.kcal){m.textContent='Не удалось распознать еду, попробуй снять крупнее.';return}
+  S.meals.push({dish:j.dish,kcal:Math.round(j.kcal),p:Math.round(j.p),f:Math.round(j.f),c:Math.round(j.c),tip:j.tip});save();m.textContent='Оценка приблизительная: ±20%.';render()}
+ catch(err){m.textContent='Ошибка: '+((err&&err.message)||'попробуй ещё раз')}
+ ev.target.value=''};
+
+/* ---- ИИ-тренер ---- */
+const hist=[];
+function bub(c,t){const d=document.createElement('div');d.className='m '+c;d.textContent=t;$('chat').appendChild(d);$('chat').scrollTop=1e9;return d}
+bub('a','[Система] Игрок, я твой наставник. Спроси про питание, технику или нагрузку.');
+async function ask(){
+ const t=$('q').value.trim();if(!t)return;$('q').value='';bub('u',t);$('cerr').textContent='';
+ const ctx='Контекст: уровень '+S.lvl+', сегодня приседаний '+S.r.squat+', отжиманий '+S.r.push+', съедено '+Math.round(kcal())+' из '+S.goal+' ккал, блюда: '+(S.meals.map(m=>m.dish).join(', ')||'нет')+'. Ты Система из Solo Leveling: тренер и диетолог для похудения, обращаешься к игроку на «ты», чуть эпично, отвечай по-русски кратко (до 6 предложений), без медицинских диагнозов.';
+ hist.push({role:'user',content:t});
+ const msgs=hist.slice(-8).map((m,i,a)=>i===a.length-1?{role:'user',content:ctx+'\n\nВопрос: '+m.content}:m);
+ const b=bub('a','…');
+ try{const s=await smp();if(!s)throw{code:'na'};const r=await s(msgs,{cache:false,onText:x=>{b.textContent=x.text}});b.textContent=r.text;hist.push({role:'assistant',content:r.text})}
+ catch(err){b.remove();hist.pop();$('cerr').textContent='Тренер недоступен: '+((err&&err.message)||'проверь вкладку ИИ')}}
+$('send').onclick=ask;$('q').onkeydown=ev=>{if(ev.key==='Enter')ask()};
+
+
+/* ---- Подключение ИИ ---- */
+const P=[['По умолчанию (задано на сервере)','',''],['DeepSeek','https://api.deepseek.com','deepseek-chat'],['OpenRouter','https://openrouter.ai/api/v1',''],['Google Gemini (видит фото)','https://generativelanguage.googleapis.com/v1beta/openai','gemini-2.0-flash'],['Ollama на ПК','http://localhost:11434/v1','llama3.2'],['Свой адрес','','']];
+function ui(){const c=cfg();let o='<div class="card"><h2>[ Подключение ИИ ]</h2>';
+ for(const [k,t] of [['t','Тренер и диетолог (текст)'],['v','Фото еды (нужна модель с картинками)']]){const x=c[k]||{};
+  o+='<p style="margin:12px 0 6px">'+t+'</p><select data-p="'+k+'">'+P.map((p,i)=>'<option value="'+i+'">'+p[0]+'</option>').join('')+'</select>'+
+  ['b:Адрес API:text:base','k:Ключ:password:key','m:Модель:text:model'].map(f=>{const a=f.split(':');return'<input type="'+a[2]+'" data-f="'+k+a[0]+'" placeholder="'+a[1]+'" value="'+e(x[a[3]]||'')+'" style="margin-top:6px">'}).join('')}
+ o+='<div class="row" style="margin-top:12px"><button class="btn" id="sv">Сохранить</button><button class="btn g" id="ts">Проверить</button></div><p id="am" class="mu" style="font-size:14px"></p></div>';
+ $('t4').innerHTML=o;
+ document.querySelectorAll('[data-p]').forEach(s=>s.onchange=()=>{const k=s.dataset.p,p=P[+s.value];document.querySelector('[data-f='+k+'b]').value=p[1];document.querySelector('[data-f='+k+'m]').value=p[2]});
+ const rd=()=>{const g=f=>document.querySelector('[data-f='+f+']').value.trim();return{t:{base:g('tb'),key:g('tk'),model:g('tm')},v:{base:g('vb'),key:g('vk'),model:g('vm')}}};
+ $('sv').onclick=()=>{try{localStorage.setItem('fqai',JSON.stringify(rd()))}catch(_){}$('am').textContent='Сохранено.'};
+ $('ts').onclick=async()=>{try{localStorage.setItem('fqai',JSON.stringify(rd()))}catch(_){}$('am').textContent='Проверяю…';
+  try{const r=await sampleFn('Ответь одним словом: готов');$('am').textContent='Работает: '+r.text.slice(0,60)}catch(er){$('am').textContent='Ошибка: '+er.message}}}
+ui();
+show(0);render();
+</script><script type="module">
+/* Настоящий трекинг тела: MediaPipe Pose, счёт по углам суставов */
+import{PoseLandmarker,FilesetResolver}from'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs';
+let lm=null,st=0,last=0;
+try{const f=await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm');
+ const mk=d=>PoseLandmarker.createFromOptions(f,{baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task',delegate:d},runningMode:'VIDEO',numPoses:1});
+ try{lm=await mk('GPU')}catch(_){lm=await mk('CPU')}}catch(_){lm=null}
+const ang=(a,b,c)=>{let d=Math.abs((Math.atan2(c.y-b.y,c.x-b.x)-Math.atan2(a.y-b.y,a.x-b.x))*180/Math.PI);return d>180?360-d:d};
+window.poseTick=function loop(){
+ if(!cam.on)return;if(!lm)return tick();
+ try{const p=lm.detectForVideo($('vid'),performance.now()).landmarks[0];
+  if(p){const ex=$('ex').value,L=ex==='squat'?[23,25,27]:[11,13,15],R=ex==='squat'?[24,26,28]:[12,14,16];
+   const vs=s=>s.reduce((a,i)=>a+(p[i].visibility||0),0),s=vs(L)>=vs(R)?L:R,a=ang(p[s[0]],p[s[1]],p[s[2]]);
+   const lo=ex==='squat'?100:90,hi=ex==='squat'?160:155;
+   if(a<lo)st=1;else if(a>hi&&st===1&&Date.now()-last>500){st=0;last=Date.now();addRep()}
+   $('cmsg').textContent='Трекинг тела: угол '+Math.round(a)+'°'}}catch(_){}
+ requestAnimationFrame(loop)};
+</script>
+</body></html>
